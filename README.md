@@ -1,0 +1,1 @@
+# Geochemistrypi_exe_pyinstaller

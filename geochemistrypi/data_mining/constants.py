@@ -8,7 +8,7 @@ PACKAGEDIR = os.path.dirname(os.path.realpath(sys.argv[0]))
 
 
 # the directory where the built-in data set to be processed stays
-BUILT_IN_DATASET_PATH = os.path.join(PACKAGEDIR, "data")
+BUILT_IN_DATASET_PATH = os.path.join(os.path.dirname(PACKAGEDIR), "data")
 PACKAGEDIR = os.path.dirname(os.path.realpath(sys.argv[0]))
 # current working directory in which the user activates the application
 WORKING_PATH = os.path.realpath(sys.argv[0])
@@ -17,7 +17,7 @@ WORKING_PATH = os.path.dirname(sys.argv[0])
 
 
 # the root directory where all the output stays
-OUTPUT_PATH = os.path.join(PACKAGEDIR, "geopi_output")
+OUTPUT_PATH = os.path.join(os.path.dirname(PACKAGEDIR), "geopi_output")
 
 # the directory where the artifact is saved within the MLflow run's artifact directory
 MLFLOW_ARTIFACT_DATA_PATH = "data"

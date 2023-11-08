@@ -5,6 +5,7 @@ import time
 from typing import Dict
 
 import pandas as pd
+import numpy as np
 from rich import print
 
 from ..constants import MLFLOW_ARTIFACT_DATA_PATH, OPTION, SECTION

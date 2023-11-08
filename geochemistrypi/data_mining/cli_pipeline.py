@@ -56,17 +56,17 @@ def cli_pipeline(training_data_path: str, inference_data_path: Optional[str] = N
 
     # TODO: If the argument is False, hide all Python level warnings. Developers can turn it on by setting the argument to True.
 
-    # total_steps = 100
-    #
-    # with Progress() as progress:
-    #     task = progress.add_task("[cyan]Loading...", total=total_steps)
-    #     for step in range(total_steps):
-    #         sleep(0.05)
-    #         progress.update(task, advance=1)
-    #
-    # print("[green]Geochemistry π Program loaded successfully!")
-    # sleep(1)
-    # os.system("cls")
+    total_steps = 100
+
+    with Progress() as progress:
+        task = progress.add_task("[cyan]Loading...", total=total_steps)
+        for step in range(total_steps):
+            sleep(0.05)
+            progress.update(task, advance=1)
+
+    print("[green]Geochemistry π Program loaded successfully!")
+    sleep(1)
+    os.system("cls")
 
     show_warning(False)
 
@@ -89,29 +89,29 @@ def cli_pipeline(training_data_path: str, inference_data_path: Optional[str] = N
         print("[bold red]No Data File Provided![/bold red]")
         print("[bold green]Built-in Data Loading.[/bold green]")
 
-    # <-- Dependency Checking -->
-    with console.status("[bold green]Denpendency Checking...[/bold green]", spinner="dots"):
-        sleep(1.5)
-    my_os = get_os()
-    # Check the dependency of the basemap or cartopy to project the data on the world map later.
-    if my_os == "Windows" or my_os == "Linux":
-        if not check_package("basemap"):
-            print("[bold red]Downloading Basemap...[/bold red]")
-            install_package("basemap")
-            print("[bold green]Successfully downloading![/bold green]")
-            print("[bold green]Download happens only once![/bold green]")
-            clear_output()
-    elif my_os == "macOS":
-        if not check_package("cartopy"):
-            print("[bold red]Downloading Cartopy...[/bold red]")
-            install_package("cartopy")
-            print("[bold green]Successfully downloading![/bold green]")
-            print("[bold green]Downloading happens only once![/bold green]")
-            clear_output()
-    else:
-        print("[bold red]Unsupported Operating System![/bold red]")
-        print("[bold red]Please use Windows, Linux or macOS.[/bold red]")
-        exit(1)
+    # # <-- Dependency Checking -->
+    # with console.status("[bold green]Denpendency Checking...[/bold green]", spinner="dots"):
+    #     sleep(1.5)
+    # my_os = get_os()
+    # # Check the dependency of the basemap or cartopy to project the data on the world map later.
+    # if my_os == "Windows" or my_os == "Linux":
+    #     if not check_package("basemap"):
+    #         print("[bold red]Downloading Basemap...[/bold red]")
+    #         install_package("basemap")
+    #         print("[bold green]Successfully downloading![/bold green]")
+    #         print("[bold green]Download happens only once![/bold green]")
+    #         clear_output()
+    # elif my_os == "macOS":
+    #     if not check_package("cartopy"):
+    #         print("[bold red]Downloading Cartopy...[/bold red]")
+    #         install_package("cartopy")
+    #         print("[bold green]Successfully downloading![/bold green]")
+    #         print("[bold green]Downloading happens only once![/bold green]")
+    #         clear_output()
+    # else:
+    #     print("[bold red]Unsupported Operating System![/bold red]")
+    #     print("[bold red]Please use Windows, Linux or macOS.[/bold red]")
+    #     exit(1)
 
     # <--- Experiment Setup --->
     logger.debug("Experiment Setup")
@@ -403,8 +403,8 @@ def cli_pipeline(training_data_path: str, inference_data_path: Optional[str] = N
     # If the user doesn't choose all models, then run the designated model.
     if model_num != all_models_num:
         # run the designated model
-        run = Modes2Initiators[mode_num](model_name)
-        # If is_automl is False, then run the model without AutoML.
+        run = [mode_num](model_name)
+        # If is_automl is False, then run the modeModes2Initiatorsl without AutoML.
         if not is_automl:
             run.activate(X, y, X_train, X_test, y_train, y_test)
         else:
@@ -448,10 +448,10 @@ def cli_pipeline(training_data_path: str, inference_data_path: Optional[str] = N
                 clear_output()
     mlflow.end_run()
 
-    m = int(Prompt.ask("[bold green]Enter 1 to end the program[/bold green]"))
+    m = int(Prompt.ask("[bold green]Enter 0 to end the program[/bold green]"))
     # m = int(input("[bold green]Enter 1 to end the program:[bold green]"))
     while True:
-        if m == 1:
+        if m == 0:
             break
         else:
             # m = int(input("[bold green]Enter 1 to end the program:[bold green]"))

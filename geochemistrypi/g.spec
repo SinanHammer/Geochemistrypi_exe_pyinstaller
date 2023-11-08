@@ -1,11 +1,9 @@
-# -*- mode: python ; coding: utf-8 -*-
-import sys ; sys.setrecursionlimit(sys.getrecursionlimit() * 5)
 from PyInstaller.utils.hooks import collect_all
 
 
 datas = []
 binaries = []
-hiddenimports = ['charset_normalizer.md__mypyc', 'mlflow']
+hiddenimports = ['charset_normalizer.md__mypyc', 'mlflow', 'cartopy']
 tmp_ret = collect_all('xgboost')
 datas += tmp_ret[0]; binaries += tmp_ret[1]; hiddenimports += tmp_ret[2]
 
@@ -28,8 +26,6 @@ a = Analysis(
 './auth/sql_models.py',
 './auth/utils.py',
 './auth/__init__.py',
-'./hooks/hook-cartopy.py',
-'./hooks/hook-xgboost.py',
 './data_mining/cli_pipeline.py',
 './data_mining/constants.py',
 './data_mining/dash_pipeline.py',
@@ -138,4 +134,3 @@ exe = EXE(
     entitlements_file=None,
     icon=['logo.png'],
 )
-

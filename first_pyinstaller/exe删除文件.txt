@@ -1,0 +1,18 @@
+-----------------------------**  World Map **------------------------------------
+-Basemap
+
+-------------------------------** AUTOML **-------------------------------------
+-----*   Regression  *------
+- Linear Regression
+	-Permutation Importance Diagram
+- K-Nearest Neighbors
+	- Cross Validation 
+- Random Forest
+- Extra-Trees
+	-Cross Validation
+- Multi-layer Perceptron
+
+- Support Vector Machine
+
+-----*   Classification  *------
+-Sample Balance on Train Set
